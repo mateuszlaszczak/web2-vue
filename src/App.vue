@@ -1,5 +1,20 @@
 <template>
-  <input type="email" v-model="email">
+  <div id="app">
+    <div v-if="!isAuthenticated">
+      <h1>Witaj w systemie do zapisów na zajęcia</h1>
+      <p>Zaloguj się e-mailem <input type="email" v-model="email">
+      <button @click="logIn()">Wchodzę</button></p>
+    </div>
+   <div v-else>
+    <h2>Zalogowany jako {{email }}</h2>
+    <button @click="logOut()">Wyloguj</button>
+   </div>
+
+
+  </div>
+  
+  
+  
 </template>
 
 <script>
@@ -7,9 +22,18 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Hello World!!!'
+      email: '...',
+      isAuthenticated: false
     }
+  },
+methods: {
+  logIn() {
+  this.isAuthenticated=true;
+  },
+  logOut() {
+  this.isAuthenticated=false;
   }
+}
 }
 </script>
 
